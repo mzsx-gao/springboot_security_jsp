@@ -28,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
+
     //SpringSecurity配置信息
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -42,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/failer.jsp")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/logout")
+                .logoutUrl("/logout")
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login.jsp")
                 .and()
